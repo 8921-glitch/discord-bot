@@ -76,4 +76,6 @@ async def check_twitter():
 
 
 # 啟動 Bot
+keep_alive()
+
 bot.run(TOKEN)
