@@ -7,9 +7,9 @@ TOKEN = os.getenv("TOKEN")
 
 CHANNEL_ID = 1505035336659763210
 
-RSS_URL = "https://nitter.net/OpenAI/rss"
+RSS_URL = "https://x.com/LimbusCompany_B/rss"
 
-intents = discord.Intents.default()
+intents = discord.Intents.all()
 
 bot = commands.Bot(command_prefix="!", intents=intents)
 
@@ -36,8 +36,14 @@ async def check_twitter():
 
             channel = bot.get_channel(CHANNEL_ID)
 
-            await channel.send(
-                f"新推文！\n{latest.title}\n{latest.link}"
-            )
+            print(channel)
+            print(CHANNEL_ID)
+
+            if channel:
+                await channel.send(
+                    f"新推文！\n{latest.title}\n{latest.link}"
+                )
+            else:
+                print("找不到頻道")
 
 bot.run(TOKEN)
